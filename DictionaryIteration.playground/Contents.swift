@@ -18,7 +18,10 @@
  */
 // write your code here
 
-
+var mustHearAlbums = ["Nirvana" : "Nevermind",
+                      "Blondie" : "Parallel Lines",
+                      "The Kinks" : "Low Budget",
+                      "The Beatles" : "Sgt. Pepper's Lonely Hearts Club Band"]
 
 
 /*: question2
@@ -26,6 +29,9 @@
  */
 // write your code here
 
+mustHearAlbums["Pixies"] = "Doolittle"
+
+print(mustHearAlbums)
 
 
 
@@ -34,7 +40,7 @@
  */
 // write your code here
 
-
+mustHearAlbums["The Kinks"] = nil
 
 
 
@@ -42,8 +48,15 @@
  ### 4. A band name has been defined in the constant `bandName` below. Using this constant and the dictionary you created in Question 1, print "<Band>'s top-selling album was <Album>" to the console.
  */
 let bandName = "Nirvana"
+var topAlbum = mustHearAlbums[bandName]
 // write your code here
 
+if let topAlbum = topAlbum {
+    print("\(bandName)'s top-selling album was \(topAlbum)")
+}
+else {
+    "Something went wrong"
+}
 
 
 
@@ -52,6 +65,10 @@ let bandName = "Nirvana"
  */
 // write your code here
 
+for (key, value) in mustHearAlbums {
+    
+    print("\(key)'s top-selling album was \(value)")
+}
 
 
 
@@ -59,13 +76,13 @@ let bandName = "Nirvana"
  ### 6. What type of data structure is returned when you iterate over a dictionary?
  */
 
-
+//I believe a tuple is returned and then formatted into the printed String.
 
 
 /*: question7
  ### 7. Imagine every student in every grade in a high school took an exam. Each student got a letter grade based on their test results (A, B, C, D, and F). The results were averaged together per grade. How could you represent this mapping of grades to exam average?
  */
-
+//I would make this a dictionary with each Grade as a key and each value as a tuple 1) an Array of grades and 2) an Int representing the grade's average
 
 
 
@@ -79,6 +96,10 @@ let bandName = "Nirvana"
  */
 // write your code here
 
+let examScores = [9 : "B",
+                  10 : "A",
+                  11 : "C",
+                  12 : "B"]
 
 
 
@@ -87,7 +108,9 @@ let bandName = "Nirvana"
  */
 // write your code here
 
-
+for (key, value) in examScores {
+    print("Grade \(key) got \(value)")
+}
 
 
 /*: question10
@@ -95,7 +118,25 @@ let bandName = "Nirvana"
  */
 // write your code here
 
+var grades = Array(examScores.values)
 
+var highestGrade = grades.sort().first
+
+for (key, value) in examScores {
+    
+    if (value == highestGrade) {
+        
+        if let highestGrade = highestGrade {
+        print("Grade \(key) got the highest score with \(highestGrade)!")    }
+        else {
+            print("Everyone failed")
+        }
+    }
+}
+
+print("The highest grade is \(highestGrade)")
+
+print(grades)
 
 
 /*:
